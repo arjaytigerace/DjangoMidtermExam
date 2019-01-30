@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+Posts App
+{% endblock %}
+
+{% block body %}
+<nav>
+        <div class="nav-wrapper teal lighten-2">
+            <a href="#" class="brand-logo">&nbsp;Posts App</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="{% url 'post:create' %}">Create Post</a></li>
+            </ul>
+        </div>
+    </nav>
+
+{% for post in posts %}
+<br />
+<div class="row" style="margin-left:400px">
+    <div class="col s12 m6 ">
+        <div class="card row">
+            <div class="card-content black-text">
+                <span class="card-title">{{ post.title }}</span>
+                <p>Posted on {{ post.date_created }}</p>
+                <p>Last updated {{ post.date_updated }}</p>
+            </div>
+            <div class="card-action">
+                <a href="{% url 'post:detail' post.id%}">Open Comments ({{ post.comments.all | length }} comments)</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endfor %}
+
+{% endblock %}-"
