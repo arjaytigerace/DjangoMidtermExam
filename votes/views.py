@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Candidate, Vote, Position
+from .forms import VoteModelForm
 
 app_name='votes'
 
